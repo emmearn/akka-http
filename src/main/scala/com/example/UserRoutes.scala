@@ -2,6 +2,7 @@ package com.example
 
 import akka.actor.{ ActorRef, ActorSystem }
 import akka.event.Logging
+import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 
 import scala.concurrent.duration._
 import akka.http.scaladsl.server.Directives._
@@ -18,7 +19,7 @@ import com.example.UserRegistryActor._
 import akka.pattern.ask
 import akka.util.Timeout
 
-trait UserRoutes extends JsonSupport {
+trait UserRoutes extends SprayJsonSupport {
 
   // we leave these abstract, since they will be provided by the App
   implicit def system: ActorSystem

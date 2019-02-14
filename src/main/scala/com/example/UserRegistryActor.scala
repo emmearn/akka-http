@@ -1,11 +1,18 @@
 package com.example
 
 import akka.actor.{ Actor, ActorLogging, Props }
+import spray.json.DefaultJsonProtocol.{ jsonFormat1, jsonFormat3 }
+import spray.json.DefaultJsonProtocol._
 
 final case class User(name: String, age: Int, countryOfResidence: String)
 final case class Users(users: Seq[User])
 
 object UserRegistryActor {
+  implicit val userJsonFormat = jsonFormat3(User)
+  implicit val usersJsonFormat = jsonFormat1(Users)
+
+  implicit val actionPerformedJsonFormat = jsonFormat1(ActionPerformed)
+
   final case class ActionPerformed(description: String)
   final case object GetUsers
   final case class CreateUser(user: User)
