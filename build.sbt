@@ -25,3 +25,4 @@ enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
 
 mainClass in Compile := Some("com.example.QuickstartServer")
+dockerBaseImage       := "openjdk:jre"
